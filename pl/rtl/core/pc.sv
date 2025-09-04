@@ -4,8 +4,8 @@ module pc(
     input logic clk,
     input logic [31:0] pctarget,
     input logic pcsrc,
-    input logic stallf,
-    output logic [31:0] pcf, pcfplus4
+    input logic stall,
+    output logic [31:0] pc, pcplus4
 );
 
 endmodule

@@ -1,9 +1,9 @@
 `default_nettype none
 
 module haz_unit(
-    input logic [4:0] rs1d, rs2d, rs1e, rs2e, rde, rdm, rdw,
-    input logic pcsrc, resultsrc, regwritem, regwritew,
-    output logic stallf, stalld, flushd, flushe,
+    input logic [4:0] rs1_d, rs2_d, rs1_e, rs2_e, rd_e, rd_m, rd_w,
+    input logic pcsrc, resultsrc, regwrite_m, regwrite_w,
+    output logic stall_f, stall_d, flush_d, flush_e,
     output logic [1:0] forwarda, forwardb
 );
 
