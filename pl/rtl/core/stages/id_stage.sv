@@ -1,7 +1,7 @@
 `default_nettype none
 
 module id_stage(
-    input logic clk, regwrite_w,
+    input logic clk, we3,
     input logic [31:0] wd3,
     input logic [4:0] a3,
     input if_id_t in,

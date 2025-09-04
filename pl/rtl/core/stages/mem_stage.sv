@@ -3,6 +3,7 @@
 module mem_stage(
     input logic clk,
     input ex_mem_t in,
+    output logic [31:0] aluresult,
     output mem_wb_t out
 );
 

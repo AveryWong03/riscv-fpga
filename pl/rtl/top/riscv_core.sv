@@ -53,12 +53,12 @@ if_id_reg u_if_id_reg(
 
 id_ex_t id_o;
 id_stage u_id_stage(
-    .clk        (clk        ),
-    .regwrite_w (wb_i.regwrite),
-    .wd3        (result_w),
-    .a3         (wb_i.rd),
-    .in         (id_i         ),
-    .out        (id_o        )
+    .clk (clk        ),
+    .we3 (wb_i.regwrite),
+    .wd3 (result_w),
+    .a3  (wb_i.rd),
+    .in  (id_i         ),
+    .out (id_o        )
 );
 
 id_ex_t ex_i;
@@ -77,7 +77,7 @@ ex_stage u_ex_stage(
     .forwardb  (forwardb ),
     .in        (ex_i       ),
     .result    (result_w),
-    .aluresult (mem_o.aluresult),
+    .aluresult (aluresult_m),
     .pctarget  (pctarget_e)
     .pcsrc     (pcsrc_e),
     .out       (ex_o      )
@@ -91,9 +91,11 @@ ex_mem_reg u_ex_mem_reg(
 );
 
 mem_wb_t mem_o;
+logic [31:0] aluresult_m;
 mem_stage u_mem_stage(
     .clk (clk ),
     .in  (mem_i  ),
+    .aluresult (aluresult_m),
     .out (mem_o )
 );
 
