@@ -1,6 +1,6 @@
 typedef struct packed {
     logic [31:0] instr, pc, pcplus4
-} if_id;
+} if_id_t;
 
 typedef struct packed {
     logic [31:0] rd1, rd2, pc, pcplus4,
@@ -9,18 +9,18 @@ typedef struct packed {
     logic regwrite, memwrite, jump, branch, alusrc, 
     logic [1:0] resultsrc, 
     logic [2:0] alucontrol
-} id_ex;
+} id_ex_t;
 
 typedef struct packed {
     logic [31:0] aluresult, writedata, pcplus4,
     logic [4:0] rd,
     logic regwrite, memwrite,
     logic [1:0] resultsrc
-} ex_mem;
+} ex_mem_t;
 
 typedef struct packed {
     logic [31:0] aluresult, readdata, pcplus4,
     logic [4:0] rd,
     logic regwrite,  
     logic [1:0] resultsrc
-} mem_wb;
+} mem_wb_t;

@@ -2,8 +2,8 @@
 
 module if_stage(
     input logic clk, en,
-    input logic [31:0] pcsrc, pctarget, pcplus4,
-    output if_id out
+    input logic [31:0] pcsrc, pctarget,
+    output if_id_t out
 );
 
 endmodule

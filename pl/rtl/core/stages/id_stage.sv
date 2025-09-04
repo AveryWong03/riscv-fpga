@@ -2,8 +2,10 @@
 
 module id_stage(
     input logic clk, regwrite_w,
-    input if_id in,
-    output id_ex out // rs1, rs2 need to be output to hazard unit
+    input logic [31:0] wd3,
+    input logic [4:0] a3,
+    input if_id_t in,
+    output id_ex_t out // rs1, rs2 need to be output to hazard unit
 );
 
 endmodule
