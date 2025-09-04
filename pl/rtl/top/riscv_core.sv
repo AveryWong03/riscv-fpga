@@ -22,6 +22,7 @@ haz_unit u_haz_unit(
     .pcsrc      (pcsrc_e      ),
     .regwrite_m (mem_i.regwrite  ),
     .regwrite_w (wb_i.regwrite ),
+    .resultsrc  (ex_i.resultsrc)
     .stall_f    (stall_f    ),
     .stall_d    (stall_d    ),
     .flush_d    (flush_d    ),
@@ -49,14 +50,13 @@ if_id_reg u_if_id_reg(
     .q   (id_i   )
 );
 
-// TODO: Left off here, also reformat port order might be nice
 
 id_ex_t id_o;
 id_stage u_id_stage(
     .clk        (clk        ),
-    .regwrite_w (),
-    .wd3        ()
-    .a3         ()
+    .regwrite_w (wb_i.regwrite),
+    .wd3        (result_w),
+    .a3         (wb_i.rd),
     .in         (id_i         ),
     .out        (id_o        )
 );
@@ -73,14 +73,14 @@ ex_mem_t ex_o;
 logic [31:0] pctarget_e;
 logic pcsrc_e;
 ex_stage u_ex_stage(
-    .forwarda (forwarda ),
-    .forwardb (forwardb ),
-    .in       (ex_i       ),
-    .pctarget (pctarget_e)
-    .pcsrc    (pcsrc_e),
-    .rs1      (rs1_e      ),
-    .rs2      (rs2_e      ),
-    .out      (ex_o      )
+    .forwarda  (forwarda ),
+    .forwardb  (forwardb ),
+    .in        (ex_i       ),
+    .result    (result_w),
+    .aluresult (mem_o.aluresult),
+    .pctarget  (pctarget_e)
+    .pcsrc     (pcsrc_e),
+    .out       (ex_o      )
 );
 
 ex_mem_t mem_i;
@@ -104,11 +104,12 @@ mem_wb_reg u_mem_wb_reg(
     .q   (wb_i   )
 );
 
+logic [31:0] result_w
 wb_stage u_wb_stage(
     .in       (wb_i       ),
     .regwrite (regwrite ),
     .rd       (rd       ),
-    .result   (result   )
+    .result   (result_w   )
 );
 
 
