@@ -17,9 +17,11 @@ if_stage u_if_stage(
 initial begin
     clk = 0; 
     en = 0;
-    pc_src = 0;
+    pcsrc = 0;
     pctarget = 18; # 8;
-    pc_src = 1;
+    pcsrc = 1; # 8;
+    pcsrc = 0; # 8;
+    pcsrc = 1;
     
     # 500
     $finish;
