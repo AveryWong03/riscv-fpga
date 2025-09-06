@@ -18,8 +18,8 @@ pc u_pc(
 
 if_id_t if_id_input;
 
-instr_mem your_instance_name (
-  .clka(clka),    // input wire clka
+instr_mem u_instr_mem (
+  .clka(clk),    // input wire clka
   .ena(1'b1),      // input wire ena
   .addra(pc),  // input wire [11 : 0] addra
   .douta(if_id_input.instr)  // output wire [31 : 0] douta
