@@ -7,4 +7,17 @@ module wb_stage(
     output logic [31:0] result
 );
 
+always_comb begin
+    case(in.resultsrc)
+        2'b00: result = in.aluresult;
+        2'b01: result = in.readdata;
+        2'b10: result = in.pcplus4;
+        default: result = 0;
+    endcase
+end
+
+// Pass through output assignments
+assign rd = in.rd; 
+assign regwrite = in.regwrite;
+
 endmodule
