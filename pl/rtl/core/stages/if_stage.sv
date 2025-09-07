@@ -3,7 +3,8 @@
 module if_stage(
     input logic clk, en,
     input logic [31:0] pcsrc, pctarget,
-    output if_id_t out
+    output if_id_t out,
+    output logic [31:0] instr
 );
 
 logic [31:0] pc, pcplus4;
@@ -16,17 +17,14 @@ pc u_pc(
     .pcplus4  (pcplus4  )
 );
 
-if_id_t if_id_input;
-
 instr_mem u_instr_mem (
   .clka(clk),    // input wire clka
   .ena(1'b1),      // input wire ena
   .addra(pc),  // input wire [11 : 0] addra
-  .douta(if_id_input.instr)  // output wire [31 : 0] douta
+  .douta(instr)  // output wire [31 : 0] douta
 );
 
-assign if_id_input.pc = pc;
-assign if_id_input.pcplus4 = pcplus4;
-assign out = if_id_input;
+assign out.pc = pc;
+assign out.pcplus4 = pcplus4;
 
 endmodule

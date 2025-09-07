@@ -1,12 +1,9 @@
 typedef struct packed {
-    logic [31:0] instr;
     logic [31:0] pc;
     logic [31:0] pcplus4;
 } if_id_t;
 
 typedef struct packed {
-    logic [31:0] rd1;
-    logic [31:0] rd2;
     logic [31:0] pc;
     logic [31:0] pcplus4;
     logic [4:0] rs1;
@@ -34,7 +31,6 @@ typedef struct packed {
 
 typedef struct packed {
     logic [31:0] aluresult;
-    logic [31:0] readdata;
     logic [31:0] pcplus4;
     logic [4:0] rd;
     logic regwrite;

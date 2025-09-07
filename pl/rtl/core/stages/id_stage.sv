@@ -4,8 +4,10 @@ module id_stage(
     input logic clk, we3,
     input logic [31:0] wd3,
     input logic [4:0] a3,
+    input logic [31:0] instr,
     input if_id_t in,
-    output id_ex_t out // rs1, rs2 need to be output to hazard unit
+    output id_ex_t out,
+    output logic [31:0] rd1, rd2
 );
 
 logic [6:0] op, funct7;
@@ -14,7 +16,7 @@ logic [4:0] a1, a2;
 logic [1:0] immsrc;
 
 imm_gen u_imm_ged (
-    .instr(in.instr),
+    .instr(instr),
     .immsrc(immsrc),
     .op(op),
     .funct3(funct3),
@@ -34,8 +36,8 @@ regfile u_regfile (
     .a3(a3),
     .wd3(wd3),
     .we3(we3),
-    .rd1(out.rd1),
-    .rd2(out.rd2)
+    .rd1(rd1),
+    .rd2(rd2)
 );
 
 ctl_unit u_ctl_unit (
