@@ -47,8 +47,8 @@ if_id_t id_i;
 logic [31:0] instr_d;
 if_id_reg u_if_id_reg(
     .clk (clk ),
-    .clr (flush_d ),
-    .en  (stall_d ),
+    .flush (flush_d ),
+    .stall  (stall_d ),
     .instr_i (instr_f),
     .d   (if_o   ),
     .instr_o (instr_d),
@@ -74,7 +74,7 @@ id_ex_t ex_i;
 logic [31:0] rd1_e, rd2_e;
 id_ex_reg u_id_ex_reg(
     .clk (clk ),
-    .clr (flush_e ),
+    .flush (flush_e ),
     .d   (id_o   ),
     .rd1_i(rd1_d),
     .rd2_i(rd2_d),

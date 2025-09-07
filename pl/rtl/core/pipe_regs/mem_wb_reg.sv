@@ -7,5 +7,10 @@ module mem_wb_reg(
     output logic [31:0] readdata_o, 
     output mem_wb_t q
 );
+    always_ff @(posedge clk) begin
+        q <= d;
+    end
+    
+    assign readdata_o = readdata_i;
 
 endmodule

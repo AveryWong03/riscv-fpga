@@ -6,4 +6,8 @@ module ex_mem_reg(
     output ex_mem_t q
 );
 
+    always_ff @(posedge clk) begin
+        q <= d;
+    end
+
 endmodule
