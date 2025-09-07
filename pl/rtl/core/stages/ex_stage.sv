@@ -10,7 +10,6 @@ module ex_stage(
 );
 
 logic [31:0] srca, srcb;
-
 logic zero;
 alu u_alu(
     .srca       (srca       ),
@@ -27,25 +26,19 @@ branch_unit u_branch_unit(
     .pcsrc  (pcsrc  )
 );
 
-// ALU src select
-always_comb begin
-    case(forwarda)
-        2'b00: srca = in.rd1;
-        2'b01: srca = result_w;
-        2'b10: srca = aluresult_m;
-        default: srca = 0;
-    endcase 
-end
-
-always_comb begin
-    case(forwardb)
-        2'b00: out.writedata = in.rd2;
-        2'b01: out.writedata = result_w;
-        2'b10: out.writedata = aluresult_m;
-        default: out.writedata = 0;
-    endcase 
-end
-assign srcb = (in.alusrc) ? in.immext : out.writedata;
+foward_unit u_foward_unit(
+    .rd1       (in.rd1       ),
+    .rd2       (in.rd2       ),
+    .result    (result_w    ),
+    .aluresult (aluresult_m ),
+    .immext    (in.immext    ),
+    .forwarda  (forwarda  ),
+    .forwardb  (forwardb  ),
+    .alusrc    (in.alusrc    ),
+    .srca      (srca      ),
+    .srcb      (srcb      ),
+    .writedata (out.writedata )
+);
 
 // PC target
 assign pctarget = in.pc + in.immext;
