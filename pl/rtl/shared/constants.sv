@@ -4,6 +4,7 @@ package constants;
     localparam ALU_ADD = 3'b000;
     localparam ALU_SUB = 3'b001;
     localparam ALU_SLT = 3'b101;
+    localparam ALU_SLT = 3'b110; // Outside tb scope? - add later
     localparam ALU_OR  = 3'b011;
     localparam ALU_AND = 3'b010;
 

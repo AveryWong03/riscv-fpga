@@ -5,4 +5,6 @@ module branch_unit(
     output logic pcsrc
 );
 
+assin pcsrc = (zero & branch) | jump;
+
 endmodule 
