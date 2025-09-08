@@ -8,12 +8,17 @@ module regfile(
     output logic [31:0] rd1, rd2
 );
 
-initial begin
-  $readmemh("regfile_init.hex", rf);
-end
-
 logic [31:0] rf[31:0];
+initial begin
+  // Zero the entire array
+  for (int i = 0; i < 32; i++) begin
+    rf[i] = 32'd0;
+  end
 
+  // Set specific values
+  rf[3] = 32'd3;
+  rf[9] = 32'd9;
+end
 always_ff @(negedge clk)
     if(we3) rf[a3] <= wd3;
 

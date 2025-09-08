@@ -9,10 +9,13 @@ module if_id_reg(
     
 );
 
+    if_id_t q_reg = '0;
+    assign q = q_reg;
+
     always_ff @(posedge clk) begin
-        if(flush) q <= '0;
-        else if(stall) q <= q;
-        else q <= d;
+        if(flush) q_reg <= '0;
+        else if(stall) q_reg <= q_reg;
+        else q_reg <= d;
     end
 
     // instr_i comes from bram memory that is already registered on the clock

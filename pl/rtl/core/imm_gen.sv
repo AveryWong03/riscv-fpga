@@ -16,6 +16,8 @@ assign rd       = instr[11:7];
 assign funct3   = instr[14:12];
 assign rs1      = instr[19:15];
 assign rs2      = instr[24:20];
+assign a1       = instr[19:15];
+assign a2       = instr[24:20]; 
 assign funct7   = instr[31:25];
 
 always_comb begin

@@ -24,7 +24,8 @@ always_comb begin
     else forwardb = 2'b00;
 end
 
-logic lwstall = resultsrc[0] && ((rs1_d == rd_e) || (rs2_d == rd_e));
+logic lwstall;
+assign lwstall = resultsrc[0] && ((rs1_d == rd_e) || (rs2_d == rd_e));
 assign stall_f = lwstall;
 assign stall_d = lwstall;
 assign flush_e = lwstall || pcsrc;

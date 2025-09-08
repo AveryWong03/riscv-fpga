@@ -2,7 +2,8 @@
 
 module risc_core_tb();
 
-logic clk, result;
+logic clk;
+logic [31:0] result;
 
 risc_core u_risc_core(
     .clk    (clk    ),

@@ -13,8 +13,10 @@ assign pcplus4 = pc + 32'd4;
 logic [31:0] pcf_prime;
 assign pcf_prime = pcsrc ? pctarget : pcplus4;
 
+logic [31:0] pc_reg = '0;
+assign pc = pc_reg;
 always_ff @(posedge clk)
     if(!stall)
-        pc <= pcf_prime;
+        pc_reg <= pcf_prime;
 
 endmodule

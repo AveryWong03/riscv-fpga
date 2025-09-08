@@ -7,10 +7,12 @@ module id_ex_reg(
     output logic [31:0] rd1_o, rd2_o,
     output id_ex_t q
 );
+    id_ex_t q_reg = '0;
+    assign q = q_reg;
 
     always_ff @(posedge clk) begin
-        if(flush) q <= '0;
-        else q <= d;
+        if(flush) q_reg <= '0;
+        else q_reg <= d;
     end
 
     assign rd1_o = flush ? '0 : rd1_i;

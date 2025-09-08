@@ -19,7 +19,6 @@ pc u_pc(
 
 instr_mem u_instr_mem (
   .clka(clk),    // input wire clka
-  .ena(1'b1),      // input wire ena
   .addra(pc),  // input wire [11 : 0] addra
   .douta(instr)  // output wire [31 : 0] douta
 );
