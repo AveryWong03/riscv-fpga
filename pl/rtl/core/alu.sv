@@ -7,6 +7,8 @@ module alu(
     output logic zero
 );
 
+import constants::*;
+
 always_comb begin
     case(alucontrol)
         ALU_ADD: aluresult = srca + srcb;

@@ -1,43 +1,13 @@
 `default_nettype none
 import constants::*;
 
-module ctl_unit(
-    input logic [6:0] op,
-    input logic [2:0] funct3,
-    input logic [6:0] funct7,
-    output logic regwrite, memwrite, jump, branch, alusrc,
-    output logic [1:0] resultsrc, immsrc,
-    output logic [2:0] alucontrol
-);
-
-    logic [1:0] aluop;
-    main_decoder u_main_decoder(
-        .op        (op        ),
-        .regwrite  (regwrite  ),
-        .memwrite  (memwrite  ),
-        .jump      (jump      ),
-        .branch    (branch    ),
-        .alusrc    (alusrc    ),
-        .resultsrc (resultsrc ),
-        .immsrc    (immsrc    ),
-        .aluop     (aluop     )
-    );
-    
-    alu_decoder u_alu_decoder(
-        .funct3     (funct3     ),
-        .op_5       (op[5]       ),
-        .funct7_5   (funct7[5]     ),
-        .aluop      (aluop      ),
-        .alucontrol (alucontrol )
-    );
-    
-endmodule
-
 module main_decoder (
     input logic [6:0] op,
     output logic regwrite, memwrite, jump, branch, alusrc,
     output logic [1:0] resultsrc, immsrc, aluop
 );
+
+import constants::*;
 
     always_comb begin
         case(op)
@@ -117,34 +87,3 @@ module main_decoder (
         
     end
 endmodule
-
-module alu_decoder (
-    input logic [2:0] funct3,
-    input logic op_5,
-    input logic funct7_5,
-    input logic [1:0] aluop,
-    output logic [2:0] alucontrol 
-);
-    logic[1:0] op_funct = {op_5, funct7_5};
-
-    always_comb begin
-        case(aluop)
-            2'b00: alucontrol = ALU_ADD;
-            2'b01: alucontrol = ALU_SUB;
-            2'b10: begin
-                case(funct3)
-                    3'b000: begin
-                        if(op_funct == 2'b11) alucontrol = ALU_SUB; 
-                        else alucontrol = ALU_ADD; end
-                    3'b010: alucontrol = ALU_SLT;
-                    3'b110: alucontrol = ALU_OR;
-                    3'b111: alucontrol = ALU_AND;
-                    default: alucontrol = 0;  
-                endcase
-            end
-            default: alucontrol = 0;
-        endcase
-    end
-
-endmodule
-

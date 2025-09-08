@@ -8,6 +8,10 @@ module regfile(
     output logic [31:0] rd1, rd2
 );
 
+initial begin
+  $readmemh("regfile_init.hex", rf);
+end
+
 logic [31:0] rf[31:0];
 
 always_ff @(negedge clk)

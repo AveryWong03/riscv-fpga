@@ -22,11 +22,10 @@ always_comb begin
     case(immsrc)
         0: immext = {{20{instr[31]}}, instr[31:20]}; // I
         1: immext = {{20{instr[31]}}, instr[31:25], instr[11:7]}; // S
-        2: immext = {{20{Instr[31]}}, Instr[7], Instr[30:25], Instr[11:8], 1’b0}; // B
-        3: immext = {{12{Instr[31]}}, Instr[19:12], Instr[20], Instr[30:21], 1’b0}; // J
+        2: immext = {{20{instr[31]}}, instr[7], instr[30:25], instr[11:8], 1'b0}; // B
+        3: immext = {{12{instr[31]}}, instr[19:12], instr[20], instr[30:21], 1'b0}; // J
         default: immext = 0;
     endcase
 end
-assign immext = 
 
 endmodule

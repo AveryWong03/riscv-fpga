@@ -1,15 +1,15 @@
 `default_nettype none
 
-`include "../core/stages/types.sv"
-
 module risc_core(  
-    input logic clk
+    input logic clk,
+    output logic [31:0] result
 );
 
 logic stall_f;
 logic stall_d;
 logic flush_d;
 logic flush_e;
+logic [1:0] forwarda, forwardb;
 
 haz_unit u_haz_unit(
     .rs1_d      (id_o.rs1      ),
@@ -18,11 +18,11 @@ haz_unit u_haz_unit(
     .rs2_e      (ex_i.rs2     ),
     .rd_e       (ex_i.rd      ),
     .rd_m       (mem_i.rd       ),
-    .rd_w       (wb_i.rd       ),
+    .rd_w       (rd_w       ),
     .pcsrc      (pcsrc_e      ),
     .regwrite_m (mem_i.regwrite  ),
-    .regwrite_w (wb_i.regwrite ),
-    .resultsrc  (ex_i.resultsrc)
+    .regwrite_w (regwrite_w ),
+    .resultsrc  (ex_i.resultsrc),
     .stall_f    (stall_f    ),
     .stall_d    (stall_d    ),
     .flush_d    (flush_d    ),
@@ -36,7 +36,7 @@ if_id_t if_o;
 logic [31:0] instr_f;
 if_stage u_if_stage(
     .clk      (clk      ),
-    .en       (stall_f       ),
+    .stall       (stall_f       ),
     .pcsrc    (pcsrc_e   ),
     .pctarget (pctarget_e ),
     .out      (if_o     ),
@@ -60,9 +60,9 @@ id_ex_t id_o;
 logic [31:0] rd1_d, rd2_d;
 id_stage u_id_stage(
     .clk (clk        ),
-    .we3 (wb_i.regwrite),
+    .we3 (regwrite_w),
     .wd3 (result_w),
-    .a3  (wb_i.rd),
+    .a3  (rd_w),
     .instr(instr_d),
     .in  (id_i         ),
     .out (id_o        ),
@@ -92,9 +92,9 @@ ex_stage u_ex_stage(
     .rd1       (rd1_e),
     .rd2       (rd2_e),
     .in        (ex_i       ),
-    .result    (result_w),
-    .aluresult (aluresult_m),
-    .pctarget  (pctarget_e)
+    .result_w    (result_w),
+    .aluresult_m (aluresult_m),
+    .pctarget  (pctarget_e),
     .pcsrc     (pcsrc_e),
     .out       (ex_o      )
 );
@@ -127,12 +127,16 @@ mem_wb_reg u_mem_wb_reg(
     .q   (wb_i   )
 );
 
-logic [31:0] result_w
+logic [31:0] result_w;
+logic regwrite_w;
+logic [4:0] rd_w;
 wb_stage u_wb_stage(
     .in       (wb_i       ),
-    .regwrite (regwrite ),
-    .rd       (rd       ),
+    .regwrite (regwrite_w ),
+    .rd       (rd_w       ),
     .result   (result_w   )
 );
+
+assign result = result_w;
 
 endmodule

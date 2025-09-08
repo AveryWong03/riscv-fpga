@@ -1,7 +1,7 @@
 `default_nettype none
 
 module if_stage(
-    input logic clk, en,
+    input logic clk, stall,
     input logic [31:0] pcsrc, pctarget,
     output if_id_t out,
     output logic [31:0] instr
@@ -12,7 +12,7 @@ pc u_pc(
     .clk      (clk      ),
     .pctarget (pctarget ),
     .pcsrc    (pcsrc    ),
-    .stall    (en    ),
+    .stall    (stall    ),
     .pc       (pc       ),
     .pcplus4  (pcplus4  )
 );
