@@ -8,10 +8,10 @@ module mem_stage(
     output logic [31:0] readdata
 );
 
-regfile_mem u_data_mem (
+data_mem u_data_mem (
   .clka(clk),    // input wire clka
   .wea(in.memwrite),      // input wire [0 : 0] wea
-  .addra(in.aluresult),  // input wire [4 : 0] addra <= incorrect for now
+  .addra(in.aluresult),  // input wire [12 : 0] addra
   .dina(in.writedata),    // input wire [31 : 0] dina
   .douta(readdata)  // output wire [31 : 0] douta
 );
