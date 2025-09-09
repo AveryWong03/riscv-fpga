@@ -16,6 +16,7 @@ data_mem u_data_mem (
 );
 
 // Pass through output assignments
+assign aluresult = in.aluresult;
 assign out.aluresult = in.aluresult;
 assign out.rd = in.rd;
 assign out.pcplus4 = in.pcplus4;

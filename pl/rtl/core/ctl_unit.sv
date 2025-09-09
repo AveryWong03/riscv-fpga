@@ -125,7 +125,9 @@ module alu_decoder (
     input logic [1:0] aluop,
     output logic [2:0] alucontrol 
 );
-    logic[1:0] op_funct = {op_5, funct7_5};
+    
+    logic [1:0] op_funct;
+    assign op_funct = {op_5, funct7_5};
 
     always_comb begin
         case(aluop)
