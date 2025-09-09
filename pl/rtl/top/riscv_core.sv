@@ -65,9 +65,7 @@ id_stage u_id_stage(
     .a3  (rd_w),
     .instr(instr_d),
     .in  (id_i         ),
-    .out (id_o        ),
-    .rd1 (rd1_d),
-    .rd2 (rd2_d)
+    .out (id_o        )
 );
 
 id_ex_t ex_i;
@@ -75,11 +73,7 @@ logic [31:0] rd1_e, rd2_e;
 id_ex_reg u_id_ex_reg(
     .clk (clk ),
     .flush (flush_e ),
-    .d   (id_o   ),
-    .rd1_i(rd1_d),
-    .rd2_i(rd2_d),
-    .rd1_o(rd1_e),
-    .rd2_o(rd2_e),    
+    .d   (id_o   ),  
     .q   (ex_i   )
 );
 
@@ -89,8 +83,6 @@ logic pcsrc_e;
 ex_stage u_ex_stage(
     .forwarda  (forwarda ),
     .forwardb  (forwardb ),
-    .rd1       (rd1_e),
-    .rd2       (rd2_e),
     .in        (ex_i       ),
     .result_w    (result_w),
     .aluresult_m (aluresult_m),
@@ -132,6 +124,7 @@ logic regwrite_w;
 logic [4:0] rd_w;
 wb_stage u_wb_stage(
     .in       (wb_i       ),
+    .readdata (readdata_w),
     .regwrite (regwrite_w ),
     .rd       (rd_w       ),
     .result   (result_w   )

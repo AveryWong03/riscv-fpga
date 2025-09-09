@@ -4,7 +4,6 @@ module ex_stage(
     input logic [1:0] forwarda, forwardb,
     input id_ex_t in,
     input logic [31:0] result_w, aluresult_m,
-    input logic [31:0] rd1, rd2,
     output logic [31:0] pctarget,
     output logic pcsrc,
     output ex_mem_t out  // resultsrc, rde need to be output to hazard unit as well
@@ -28,8 +27,8 @@ branch_unit u_branch_unit(
 );
 
 foward_unit u_foward_unit(
-    .rd1       (rd1       ),
-    .rd2       (rd2       ),
+    .rd1       (in.rd1       ),
+    .rd2       (in.rd2       ),
     .result    (result_w    ),
     .aluresult (aluresult_m ),
     .immext    (in.immext    ),

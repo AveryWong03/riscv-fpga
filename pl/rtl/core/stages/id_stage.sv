@@ -6,8 +6,7 @@ module id_stage(
     input logic [4:0] a3,
     input logic [31:0] instr,
     input if_id_t in,
-    output id_ex_t out,
-    output logic [31:0] rd1, rd2
+    output id_ex_t out
 );
 
 logic [6:0] op, funct7;
@@ -36,8 +35,8 @@ regfile u_regfile (
     .a3(a3),
     .wd3(wd3),
     .we3(we3),
-    .rd1(rd1),
-    .rd2(rd2)
+    .rd1(out.rd1),
+    .rd2(out.rd2)
 );
 
 ctl_unit u_ctl_unit (

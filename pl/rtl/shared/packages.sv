@@ -7,6 +7,8 @@ package types;
     typedef struct packed {
         logic [31:0] pc;
         logic [31:0] pcplus4;
+        logic [31:0] rd1;
+        logic [31:0] rd2;
         logic [4:0] rs1;
         logic [4:0] rs2;
         logic [4:0] rd;
@@ -32,7 +34,6 @@ package types;
 
     typedef struct packed {
         logic [31:0] aluresult;
-        logic [31:0] readdata;
         logic [31:0] pcplus4;
         logic [4:0] rd;
         logic regwrite;
