@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="risc_core_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="constants" />
+            <top_module name="glbl" />
+            <top_module name="risc_core_tb" />
+            <top_module name="types" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="18.950 ns"></ZoomEndTime>
+      <Cursor1Time time="11.571 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="340"></NameColumnWidth>
+      <ValueColumnWidth column_width="150"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="13" />
+   <wvobject fp_name="/risc_core_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/risc_core_tb/result" type="array">
+      <obj_property name="ElementShortName">result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">result[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/risc_core_tb/u_risc_core/u_mem_stage/aluresult" type="array">
+      <obj_property name="ElementShortName">aluresult[31:0]</obj_property>
+      <obj_property name="ObjectShortName">aluresult[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/risc_core_tb/u_risc_core/u_haz_unit/rs1_e" type="array">
+      <obj_property name="ElementShortName">rs1_e[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rs1_e[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/risc_core_tb/u_risc_core/u_haz_unit/rd_m" type="array">
+      <obj_property name="ElementShortName">rd_m[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rd_m[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/risc_core_tb/u_risc_core/u_ex_stage/u_foward_unit/forwarda" type="array">
+      <obj_property name="ElementShortName">forwarda[1:0]</obj_property>
+      <obj_property name="ObjectShortName">forwarda[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/risc_core_tb/u_risc_core/u_ex_stage/u_foward_unit/rd1" type="array">
+      <obj_property name="ElementShortName">rd1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rd1[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/risc_core_tb/u_risc_core/u_ex_stage/u_foward_unit/rd2" type="array">
+      <obj_property name="ElementShortName">rd2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rd2[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/risc_core_tb/u_risc_core/u_ex_stage/u_foward_unit/srca" type="array">
+      <obj_property name="ElementShortName">srca[31:0]</obj_property>
+      <obj_property name="ObjectShortName">srca[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/risc_core_tb/u_risc_core/u_ex_stage/u_foward_unit/srcb" type="array">
+      <obj_property name="ElementShortName">srcb[31:0]</obj_property>
+      <obj_property name="ObjectShortName">srcb[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/risc_core_tb/u_risc_core/u_id_stage/u_regfile/rf[2]" type="array">
+      <obj_property name="ElementShortName">[2][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[2][31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/risc_core_tb/u_risc_core/u_if_stage/instr" type="array">
+      <obj_property name="ElementShortName">instr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/risc_core_tb/u_risc_core/u_id_stage/u_regfile/rf" type="array">
+      <obj_property name="ElementShortName">rf[31:0][31:0]</obj_property>
+      <obj_property name="ObjectShortName">rf[31:0][31:0]</obj_property>
+   </wvobject>
+</wave_config>
