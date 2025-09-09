@@ -2,7 +2,6 @@
 
 module wb_stage(
     input mem_wb_t in,
-    input logic [31:0] readdata, 
     output logic regwrite,
     output logic [4:0] rd,
     output logic [31:0] result
@@ -11,7 +10,7 @@ module wb_stage(
 always_comb begin
     case(in.resultsrc)
         2'b00: result = in.aluresult;
-        2'b01: result = readdata;
+        2'b01: result = in.readdata;
         2'b10: result = in.pcplus4;
         default: result = 0;
     endcase

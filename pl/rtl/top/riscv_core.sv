@@ -105,8 +105,7 @@ mem_stage u_mem_stage(
     .clk (clk ),
     .in  (mem_i  ),
     .aluresult (aluresult_m),
-    .out (mem_o ),
-    .readdata(readdata_m)
+    .out (mem_o )
 );
 
 mem_wb_t wb_i;
@@ -114,8 +113,6 @@ logic [31:0] readdata_w;
 mem_wb_reg u_mem_wb_reg(
     .clk (clk ),
     .d   (mem_o   ),
-    .readdata_i(readdata_m),
-    .readdata_o(readdata_w),
     .q   (wb_i   )
 );
 
@@ -124,7 +121,6 @@ logic regwrite_w;
 logic [4:0] rd_w;
 wb_stage u_wb_stage(
     .in       (wb_i       ),
-    .readdata (readdata_w),
     .regwrite (regwrite_w ),
     .rd       (rd_w       ),
     .result   (result_w   )
