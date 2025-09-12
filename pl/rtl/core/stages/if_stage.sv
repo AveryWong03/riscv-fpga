@@ -3,8 +3,8 @@
 module if_stage(
     input logic clk, stall, pcsrc, 
     input logic [31:0] pctarget,
-    output if_id_t out,
-    output logic [31:0] instr
+    output logic [31:0] instr,
+    output if_id_t out
 );
 
 logic [31:0] pc, pcplus4;
@@ -20,7 +20,8 @@ pc u_pc(
 instr_mem u_instr_mem (
   .clka(clk),    // input wire clka
   .addra(pc[31:2]),  // word-aligned instruction fetch
-  .douta(instr)  // output wire [31 : 0] douta
+  .douta(instr),  // output wire [31 : 0] douta
+  .ena(!stall)
 );
 
 assign out.pc = pc;

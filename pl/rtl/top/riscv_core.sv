@@ -33,25 +33,22 @@ haz_unit u_haz_unit(
 
 
 if_id_t if_o; 
-logic [31:0] instr_f;
+logic [31:0] instr;
 if_stage u_if_stage(
     .clk      (clk      ),
     .stall       (stall_f       ),
     .pcsrc    (pcsrc_e   ),
+    .instr      (instr),
     .pctarget (pctarget_e ),
-    .out      (if_o     ),
-    .instr    (instr_f)
+    .out      (if_o     )
 );
 
 if_id_t id_i;
-logic [31:0] instr_d;
 if_id_reg u_if_id_reg(
     .clk (clk ),
     .flush (flush_d ),
     .stall  (stall_d ),
-    .instr_i (instr_f),
     .d   (if_o   ),
-    .instr_o (instr_d),
     .q   (id_i   )
 );
 
@@ -63,7 +60,7 @@ id_stage u_id_stage(
     .we3 (regwrite_w),
     .wd3 (result_w),
     .a3  (rd_w),
-    .instr(instr_d),
+    .instr(instr),
     .in  (id_i         ),
     .out (id_o        )
 );
@@ -100,16 +97,16 @@ ex_mem_reg u_ex_mem_reg(
 
 mem_wb_t mem_o;
 logic [31:0] aluresult_m;
-logic [31:0] readdata_m;
+logic [31:0] readdata;
 mem_stage u_mem_stage(
     .clk (clk ),
     .in  (mem_i  ),
     .aluresult (aluresult_m),
-    .out (mem_o )
+    .out (mem_o ),
+    .readdata(readdata)
 );
 
 mem_wb_t wb_i;
-logic [31:0] readdata_w;
 mem_wb_reg u_mem_wb_reg(
     .clk (clk ),
     .d   (mem_o   ),
@@ -123,7 +120,8 @@ wb_stage u_wb_stage(
     .in       (wb_i       ),
     .regwrite (regwrite_w ),
     .rd       (rd_w       ),
-    .result   (result_w   )
+    .result   (result_w   ),
+    .readdata (readdata)
 );
 
 assign result = result_w;

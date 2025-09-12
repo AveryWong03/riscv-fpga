@@ -16,10 +16,9 @@ initial begin
   end
 
   // Set specific values
-  rf[3] = 32'd2;
-  rf[4] = 32'd4;
-  rf[5] = 32'd5;
-  rf[6] = 32'd16;
+  rf[5] = 32'd6;
+  rf[9] = 32'h1004;
+  rf[10] = 32'd10;
 end
 always_ff @(negedge clk)
     if(we3) rf[a3] <= wd3;

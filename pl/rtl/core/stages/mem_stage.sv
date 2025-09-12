@@ -4,15 +4,16 @@ module mem_stage(
     input logic clk,
     input ex_mem_t in,
     output logic [31:0] aluresult,
+    output logic [31:0] readdata,
     output mem_wb_t out
 );
 
 data_mem u_data_mem (
   .clka(clk),    // input wire clka
   .wea(in.memwrite),      // input wire [0 : 0] wea
-  .addra(in.aluresult),  // input wire [12 : 0] addra
+  .addra(in.aluresult[31:2]),  // input wire [12 : 0] addra
   .dina(in.writedata),    // input wire [31 : 0] dina
-  .douta(out.readdata)  // output wire [31 : 0] douta
+  .douta(readdata)  // output wire [31 : 0] douta
 );
 
 // Pass through output assignments

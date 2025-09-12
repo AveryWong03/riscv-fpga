@@ -2,9 +2,7 @@
 
 module if_id_reg(
     input logic clk, flush, stall,
-    input logic [31:0] instr_i,
     input if_id_t d,
-    output logic [31:0] instr_o,
     output if_id_t q
     
 );
@@ -17,8 +15,5 @@ module if_id_reg(
         else if(stall) q_reg <= q_reg;
         else q_reg <= d;
     end
-
-    // instr_i comes from bram memory that is already registered on the clock
-    assign instr_o = flush ? '0 : instr_i;
 
 endmodule
