@@ -13,7 +13,12 @@ always_comb begin
     case(alucontrol)
         ALU_ADD: aluresult = srca + srcb;
         ALU_SUB: aluresult = srca - srcb;
+        ALU_SLL: aluresult = srca << srcb[4:0];
         ALU_SLT: aluresult = ($signed(srca) < $signed(srcb)) ? 1 : 0;
+        ALU_SLTU: aluresult = (srca < srcb) ? 1 : 0;
+        ALU_XOR: aluresult = srca ^ srcb;
+        ALU_SRL: aluresult = srca >> srcb[4:0];
+        ALU_SRA:aluresult = srca >>> srcb[4:0];
         ALU_OR: aluresult = srca | srcb;
         ALU_AND: aluresult = srca & srcb;
         default: aluresult = 0;
