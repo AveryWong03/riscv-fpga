@@ -9,9 +9,6 @@ module regfile(
 );
 
 logic [31:0] rf[31:0];
-initial begin
-  $readmemh("coeffs.hex", rf);  // load 32 words from coeffs.hex
-end
 always_ff @(negedge clk)
     if(we3) rf[a3] <= wd3;
 
