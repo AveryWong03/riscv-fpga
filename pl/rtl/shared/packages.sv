@@ -20,6 +20,7 @@ package types;
         logic alusrc;
         logic [1:0] resultsrc;
         logic [2:0] alucontrol;
+        logic [2:0] funct3;
     } id_ex_t;
 
     typedef struct packed {
@@ -30,6 +31,7 @@ package types;
         logic regwrite;
         logic memwrite;
         logic [1:0] resultsrc;
+        logic [2:0] funct3;
     } ex_mem_t;
 
     typedef struct packed {
@@ -38,6 +40,7 @@ package types;
         logic [4:0] rd;
         logic regwrite;
         logic [1:0] resultsrc;
+        logic [2:0] funct3;
     } mem_wb_t;
 endpackage
 

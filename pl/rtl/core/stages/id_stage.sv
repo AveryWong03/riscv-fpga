@@ -55,5 +55,6 @@ ctl_unit u_ctl_unit (
 
 assign out.pc = in.pc;
 assign out.pcplus4 = in.pcplus4;
+assign out.funct3 = funct3;
 
 endmodule

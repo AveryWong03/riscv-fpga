@@ -23,6 +23,7 @@ assign out.rd = in.rd;
 assign out.pcplus4 = in.pcplus4;
 assign out.regwrite = in.regwrite;
 assign out.resultsrc = in.resultsrc;
+assign out.funct3 = in.funct3;
 
 
 endmodule

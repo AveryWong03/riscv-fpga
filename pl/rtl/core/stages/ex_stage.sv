@@ -49,5 +49,6 @@ assign out.rd = in.rd;
 assign out.regwrite =  in.regwrite;
 assign out.resultsrc = in.resultsrc;
 assign out.memwrite = in.memwrite; 
+assign out.funct3 = in.funct3;
 
 endmodule
