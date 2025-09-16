@@ -135,10 +135,12 @@ module alu_decoder (
             2'b01: alucontrol = ALU_SUB;
             2'b10: begin
                 case(funct3)
-                    3'b000: begin
-                        if(op_funct == 2'b11) alucontrol = ALU_SUB; 
-                        else alucontrol = ALU_ADD; end
+                    3'b000: alucontrol = (op_funct == 2'b11) ? ALU_SUB : ALU_ADD;
+                    3'b001: alucontrol = ALU_SLL;
                     3'b010: alucontrol = ALU_SLT;
+                    3'b011: alucontrol = ALU_SLTU;
+                    3'b100: alucontrol = ALU_XOR;
+                    3'b101: alucontrol = (op_funct == 2'b11) ? ALU_SRA : ALU_SRL;
                     3'b110: alucontrol = ALU_OR;
                     3'b111: alucontrol = ALU_AND;
                     default: alucontrol = 0;  
