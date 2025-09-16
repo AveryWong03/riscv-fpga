@@ -10,15 +10,7 @@ module regfile(
 
 logic [31:0] rf[31:0];
 initial begin
-  // Zero the entire array
-  for (int i = 0; i < 32; i++) begin
-    rf[i] = 32'd0;
-  end
-
-  // Set specific values
-  rf[5] = 32'd6;
-  rf[9] = 32'h1004;
-  rf[10] = 32'd10;
+  $readmemh("coeffs.hex", rf);  // load 32 words from coeffs.hex
 end
 always_ff @(negedge clk)
     if(we3) rf[a3] <= wd3;

@@ -12,6 +12,7 @@ risc_core u_risc_core(
 
 initial begin
     clk = 0; 
+    $readmemh("regfile_init.hex", u_risc_core.u_id_stage.u_regfile.rf);
     # 500
     $finish;
 end

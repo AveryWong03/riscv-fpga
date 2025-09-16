@@ -1,5 +1,5 @@
 `default_nettype none
-
+import types::*;
 module if_stage(
     input logic clk, stall, pcsrc, 
     input logic [31:0] pctarget,
